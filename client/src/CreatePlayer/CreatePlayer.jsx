@@ -3,11 +3,11 @@ import './CreatePlayer.scss';
 import { COUNTRIES } from '../constants';
 import {PostNewPlayer} from '../appState/actions';
 import apiUtils from '../apis/apiUtils';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 
 const CreatePlayer = () => {
     const [name, setName] = useState('');
-    const [winnings, setWinnings] = useState('');
+    const [winnings, setWinnings] = useState(0);
     const [country, setCountry] = useState('');
     const dispatch = useDispatch();
 
@@ -32,8 +32,8 @@ const CreatePlayer = () => {
     });
     return(
         <section className="create-player">
-            <form onSubmit={handleSubmit} >
-                <h3>Create New Player</h3>
+            <h3 className="create-player__header">Create New Player</h3>
+            <form className="create-player__form" onSubmit={handleSubmit} >
                 <div className="input-field">
                     <label htmlFor="name">Name</label>
                     <input type="text" id="name" value={name}  onChange={(e) => setName(e.target.value)}/>
@@ -48,7 +48,7 @@ const CreatePlayer = () => {
                         {CountryOptions}
                     </select>
                 </div>
-                <input type="submit" value="Submit"/>
+                <input className="submit-button" type="submit" value="Submit"/>
             </form>
         </section>
     );
