@@ -1,5 +1,9 @@
-import { FETCH_PLAYERS_SUCCESS } from './constants';
+import { FETCH_PLAYERS_SUCCESS, CREATE_PLAYER_SUCCESS } from './constants';
 
-export function fetchPlayersSuccess(data) {
+export const fetchPlayersSuccess = (data) => {
   return { type: FETCH_PLAYERS_SUCCESS, payload: { data } };
+}
+
+export const PostNewPlayer = (data) => {
+  return { type: CREATE_PLAYER_SUCCESS, payload: {data} };
 }

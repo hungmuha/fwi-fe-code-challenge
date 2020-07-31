@@ -2,12 +2,14 @@ import React from 'react';
 
 import Header from './Header/Header';
 import PlayerTable from './PlayerTable/PlayerTable';
+import CreatePlayer from './CreatePlayer/CreatePlayer';
 
 const App = () => {
   return (
     <>
-      <Header />
+      <Header /> 
       <PlayerTable />
+      <CreatePlayer/>
     </>
   );
 };

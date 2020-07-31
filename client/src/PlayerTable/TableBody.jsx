@@ -21,6 +21,9 @@ const TableBody = ({ players }) => {
             <td role="gridcell" className="table__player">
               {name}
             </td>
+            <td role="gridcell" className="table__action">
+              <button type="button" >Delete</button>
+            </td>
             <td role="gridcell" className="table__winnings">
               {winnings.toLocaleString(undefined, {
                 style: 'currency',
