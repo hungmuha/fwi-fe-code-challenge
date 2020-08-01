@@ -1,11 +1,9 @@
 @import 'variables';
 
 $header-height: 2.5rem;
-.create-player {
-    margin-top: 4rem;
-}
-.create-player {
+.create-edit-player {
     width: 100%;
+    margin-top: 4rem;
     
     &__header {
         letter-spacing: 0.00937em;
@@ -21,15 +19,17 @@ $header-height: 2.5rem;
     }
     &__form {
         margin-left: 4rem;
+        margin-right: 4rem;
     }
     .input-field {
         margin: 0 0 1rem 0; 
+        display: grid;
         label {
-            margin-right: 1rem;
             font-size: 1rem;
         }
         input,select,option {
             font-size: 1rem;
+            margin-top: .5rem;
             height: 1.5rem;
         }
     }
@@ -43,6 +43,7 @@ $header-height: 2.5rem;
     line-height: 1.5;
     border-radius: .25rem;
     color: $snow;
+    transition: background-color 0.15s;
     &:hover {
         border: 1px solid #FFFFFF;
         background-color: $moss;

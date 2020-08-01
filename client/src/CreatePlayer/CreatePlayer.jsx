@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import './CreatePlayer.scss';
 import { COUNTRIES } from '../constants';
-import {PostNewPlayer} from '../appState/actions';
+import {postNewPlayer} from '../appState/actions';
 import apiUtils from '../apis/apiUtils';
 import { useDispatch} from 'react-redux';
 
 const CreatePlayer = () => {
     const [name, setName] = useState('');
+    const [imageUrl, setimageUrl] = useState('');
     const [winnings, setWinnings] = useState(0);
-    const [country, setCountry] = useState('');
+    const [country, setCountry] = useState('US');
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
         const newPlayer = {
-            name: name,   
+            name: name,
+            // imageUrl:imageUrl,   
             country: country,
             winnings: parseInt(winnings,10),
         }
         apiUtils.post('/players',newPlayer)
         .then(function(response){
-            dispatch(PostNewPlayer(response.data));
+            dispatch(postNewPlayer(response.data));
         });    
     }
     
@@ -31,13 +32,17 @@ const CreatePlayer = () => {
         )
     });
     return(
-        <section className="create-player">
-            <h3 className="create-player__header">Create New Player</h3>
-            <form className="create-player__form" onSubmit={handleSubmit} >
+        <section className="create-edit-player">
+            <h3 className="create-edit-player__header">Create New Player</h3>
+            <form className="create-edit-player__form" onSubmit={handleSubmit} >
                 <div className="input-field">
                     <label htmlFor="name">Name</label>
                     <input type="text" id="name" value={name}  onChange={(e) => setName(e.target.value)}/>
                 </div>
+                {/* <div className="input-field">
+                    <label htmlFor="imageUrl">ImageUrl</label>
+                    <input type="url" id="imageUrl" value={imageUrl}  onChange={(e) => setimageUrl(e.target.value)}/>
+                </div> */}
                 <div className="input-field">
                     <label htmlFor="winnings">Winnings</label>
                     <input type="number" id="winnings" value={winnings} onChange={(e) => setWinnings(e.target.value)}/>
