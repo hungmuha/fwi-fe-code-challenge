@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import {useParams} from 'react-router';
+import {useHistory} from 'react-router-dom';
 import './EditPlayer.scss';
 import { COUNTRIES } from '../constants';
 import apiUtils from '../apis/apiUtils';
@@ -12,6 +13,8 @@ const EditPlayer = () => {
     const [winnings, setWinnings] = useState(0);
     const [country, setCountry] = useState('US');
     const [isLoading, setLoading] = useState(true);
+
+    const history = useHistory();
 
     const dispatch = useDispatch();
     const {id} = useParams();
@@ -42,6 +45,7 @@ const EditPlayer = () => {
         .then(function(response){
             console.log(response);
             dispatch(updatePlayer(response.data));
+            history.push('/');
         });    
     };
 

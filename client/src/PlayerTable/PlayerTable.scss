@@ -46,6 +46,19 @@ $header-height: 2.5rem;
     height: $header-height;
     text-align: left;
     vertical-align: middle;
+    .add-button {
+      border: .1rem $charcoal solid;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      height: 2rem;
+      width: 2rem;
+      background-color: $pearl;
+      transition: background-color 0.15s;
+      &:hover{
+        background-color: $vivid;
+        outline: transparent;
+      }
+    }
   }
 
   &__avatar {

@@ -4,6 +4,7 @@ import { COUNTRIES } from '../constants';
 import {postNewPlayer} from '../appState/actions';
 import apiUtils from '../apis/apiUtils';
 import { useDispatch} from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const CreatePlayer = () => {
     const [name, setName] = useState('');
@@ -11,6 +12,7 @@ const CreatePlayer = () => {
     const [winnings, setWinnings] = useState(0);
     const [country, setCountry] = useState('US');
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,6 +25,7 @@ const CreatePlayer = () => {
         apiUtils.post('/players',newPlayer)
         .then(function(response){
             dispatch(postNewPlayer(response.data));
+            history.push('/');
         });    
     }
     

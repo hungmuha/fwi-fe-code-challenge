@@ -5,7 +5,6 @@ export default function playerIds(state = [], action) {
     case FETCH_PLAYERS_SUCCESS:
       return action.payload.data.players.map((player) => player.id);
     case CREATE_PLAYER_SUCCESS:
-      console.log([...state,action.payload.data.id]);
       return [...state,action.payload.data.id];
     case UPDATE_PLAYER_SUCCESS:
       return [...state];

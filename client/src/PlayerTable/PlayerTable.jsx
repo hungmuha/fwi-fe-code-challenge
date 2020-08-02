@@ -18,7 +18,6 @@ const PlayerTable = () => {
           Accept: 'application/json',
         },
       });
-
       const json = await response.json();
       dispatch(fetchPlayersSuccess(json));
     })();
@@ -32,7 +31,7 @@ const PlayerTable = () => {
       aria-label="Poker Players"
       className="player-table"
     >
-      <TableHeader />
+      <TableHeader/>
       <TableBody players={players} />
     </div>
   );
