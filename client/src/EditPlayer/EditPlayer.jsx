@@ -5,7 +5,7 @@ import './EditPlayer.scss';
 import { COUNTRIES } from '../constants';
 import apiUtils from '../apis/apiUtils';
 import {updatePlayer} from '../appState/actions';
-import {useDispatch,useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 const EditPlayer = () => {
     const [name, setName] = useState('');
@@ -15,7 +15,6 @@ const EditPlayer = () => {
     const [isLoading, setLoading] = useState(true);
 
     const history = useHistory();
-
     const dispatch = useDispatch();
     const {id} = useParams();
     useEffect(()=>{
@@ -29,7 +28,6 @@ const EditPlayer = () => {
             setCountry(response.data.country);
             setLoading(false);
         });
-        console.log(id);
     },[]);
 
     const handleSubmit = (e) => {
@@ -42,8 +40,7 @@ const EditPlayer = () => {
             winnings: parseInt(winnings,10),
         };
         apiUtils.patch(`/players/${id}`,updatedPlayer)
-        .then(function(response){
-            console.log(response);
+        .then((response)=>{
             dispatch(updatePlayer(response.data));
             history.push('/');
         });    

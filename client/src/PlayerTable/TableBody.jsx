@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Flags from 'react-world-flags';
-import {Link} from 'react-router-dom';
-import Avatar from '../Avatar';
+import TableRow from './TableRow';
 import { COUNTRIES } from '../constants';
 
 const TableBody = ({ players }) => {
@@ -14,34 +12,14 @@ const TableBody = ({ players }) => {
     >
       <tbody>
         {players.map(({ id, name, country, winnings, imageUrl }) => (
-          <tr key={id} role="row" className="table__row">
-            <td role="gridcell" className="table__avatar">
-              <Avatar src={imageUrl} />
-            </td>
-            <td role="gridcell" className="table__player">
-              {name}
-            </td>
-            <td role="gridcell" className="table__action">
-              <Link to={'/editplayer/' + id}>
-                <button>Update</button>
-              </Link>
-              <button>Delete</button>
-            </td>
-            <td role="gridcell" className="table__winnings">
-              {winnings.toLocaleString(undefined, {
-                style: 'currency',
-                currency: 'USD',
-              })}
-            </td>
-            <td role="gridcell" className="table__native">
-              <div className="country">
-                <Avatar>
-                  <Flags code={country} alt="" />
-                </Avatar>
-                {country}
-              </div>
-            </td>
-          </tr>
+          <TableRow
+            key={id}
+            id={id}
+            name={name}
+            country={country}
+            winnings={winnings}
+            imageUrl={imageUrl}
+          />
         ))}
       </tbody>
     </table>

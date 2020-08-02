@@ -77,8 +77,20 @@ $header-height: 2.5rem;
   }
   &__action {
     padding-right: 1.5rem;
-    text-align: right;
-    width: 8rem;
+    text-align: center;
+    width: 10rem;
+    
+    .action-link {
+      text-decoration: none;
+      margin-left: .7rem;
+      color: $vivid;
+      &:hover {
+        cursor: pointer;
+      }
+      &.danger{
+        color: red;
+      }
+    }
   }
 
   &__native {

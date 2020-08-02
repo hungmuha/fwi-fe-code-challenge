@@ -21,12 +21,16 @@ const CreatePlayer = () => {
             // imageUrl:imageUrl,   
             country: country,
             winnings: parseInt(winnings,10),
-        }
-        apiUtils.post('/players',newPlayer)
-        .then(function(response){
-            dispatch(postNewPlayer(response.data));
-            history.push('/');
-        });    
+        };
+        (async function create() { 
+            const response = await apiUtils.post('/players',newPlayer);
+            await history.push('/');
+            await dispatch(postNewPlayer(response.data));
+        })();
+        // .then(function(response){
+        //     history.push('/');
+        //     dispatch(postNewPlayer(response.data));
+        // });    
     }
     
     let CountryOptions= Object.keys(COUNTRIES).map((key, index) => {
