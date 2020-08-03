@@ -8,13 +8,7 @@ function mergePlayers(state, { players }) {
   return newState;
 }
 
-function addPlayers(state, player ) {
-  const newState = { ...state };
-  newState[player.id] = player;
-  return newState;
-}
-
-function updatePlayer(state, player) {
+function addAndUpdatePlayers(state, player ) {
   const newState = { ...state };
   newState[player.id] = player;
   return newState;
@@ -31,9 +25,9 @@ export default function players(state = {}, action) {
     case FETCH_PLAYERS_SUCCESS:
       return mergePlayers(state, action.payload.data);
     case CREATE_PLAYER_SUCCESS:
-      return addPlayers(state, action.payload.data);
+      return addAndUpdatePlayers(state, action.payload.data);
     case UPDATE_PLAYER_SUCCESS:
-      return updatePlayer(state,action.payload.data);
+      return addAndUpdatePlayers(state,action.payload.data);
     case DELETE_PLAYER_SUCCESS:
       return deletePlayer(state, action.payload.id);
     default:

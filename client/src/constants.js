@@ -250,3 +250,6 @@ export const COUNTRIES = {
   QA: 'Qatar',
   MZ: 'Mozambique',
 };
+export const nameError = "Please make sure that player's name is not empty";
+export const winningsError = "Please make sure that player's winnings is not empty";
+export const imageUrlMsg = "OPTIONAL";

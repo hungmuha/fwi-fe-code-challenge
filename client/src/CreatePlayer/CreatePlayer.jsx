@@ -1,65 +1,77 @@
 import React, { useState } from 'react';
-import './CreatePlayer.scss';
-import { COUNTRIES } from '../constants';
-import {postNewPlayer} from '../appState/actions';
-import apiUtils from '../apis/apiUtils';
 import { useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
+import './CreatePlayer.scss';
+import {postNewPlayer} from '../appState/actions';
+import apiUtils from '../apis/apiUtils';
+import InputField from '../Components/InputField';
+import SelectField from '../Components/SelectField';
+import {imageUrlMsg,winningsError,nameError} from '../constants';
 
 const CreatePlayer = () => {
     const [name, setName] = useState('');
     const [imageUrl, setimageUrl] = useState('');
     const [winnings, setWinnings] = useState(0);
     const [country, setCountry] = useState('US');
+    const [isError,setError] = useState(false);
+
     const dispatch = useDispatch();
     const history = useHistory();
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!name.trim() || winnings === '') {
+            return setError(true);
+        }
         const newPlayer = {
             name: name,
-            // imageUrl:imageUrl,   
+            imageUrl:imageUrl,   
             country: country,
             winnings: parseInt(winnings,10),
-        };
-        (async function create() { 
-            const response = await apiUtils.post('/players',newPlayer);
-            await history.push('/');
-            await dispatch(postNewPlayer(response.data));
-        })();
-        // .then(function(response){
-        //     history.push('/');
-        //     dispatch(postNewPlayer(response.data));
-        // });    
+        }
+        apiUtils.post('/players',newPlayer)
+        .then(function(response){
+            history.push('/');
+            dispatch(postNewPlayer(response.data));
+        });  
     }
-    
-    let CountryOptions= Object.keys(COUNTRIES).map((key, index) => {
-        return(
-            <option key={key} value={key}>{COUNTRIES[key]}</option>
-        )
-    });
+
     return(
         <section className="create-edit-player">
             <h3 className="create-edit-player__header">Create New Player</h3>
             <form className="create-edit-player__form" onSubmit={handleSubmit} >
-                <div className="input-field">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" id="name" value={name}  onChange={(e) => setName(e.target.value)}/>
-                </div>
-                {/* <div className="input-field">
-                    <label htmlFor="imageUrl">ImageUrl</label>
-                    <input type="url" id="imageUrl" value={imageUrl}  onChange={(e) => setimageUrl(e.target.value)}/>
-                </div> */}
-                <div className="input-field">
-                    <label htmlFor="winnings">Winnings</label>
-                    <input type="number" id="winnings" value={winnings} onChange={(e) => setWinnings(e.target.value)}/>
-                </div>
-                <div className="input-field">
-                    <label htmlFor="country">Country</label>
-                    <select id="country" value={country} onChange={(e) => setCountry(e.currentTarget.value)}>
-                        {CountryOptions}
-                    </select>
-                </div>
+                <InputField
+                    label = 'name'
+                    type='text'
+                    value = {name}
+                    changeFn ={setName}
+                    showMsg = {isError}
+                    msgClass = 'danger'
+                    message = {nameError}
+                />
+                <InputField
+                    label = 'imageUrl'
+                    type='url'
+                    value = {imageUrl}
+                    changeFn ={setimageUrl}
+                    message = {imageUrlMsg}
+                />
+                <InputField
+                    label = 'winnings'
+                    type='number'
+                    value = {winnings}
+                    changeFn ={setWinnings}
+                    showMsg = {isError}
+                    msgClass = 'danger'
+                    message = {winningsError}
+                />
+                <SelectField
+                    label = 'Country'
+                    value = {country}
+                    changeFn ={setCountry}
+                />
                 <input className="submit-button" type="submit" value="Submit"/>
             </form>
         </section>

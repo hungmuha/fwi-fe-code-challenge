@@ -2,9 +2,9 @@
 
 $header-height: 2.5rem;
 .create-edit-player {
-    width: 100%;
     margin-top: 4rem;
-    
+    margin-left: 4rem;
+    margin-right: 4rem;
     &__header {
         letter-spacing: 0.00937em;
         line-height: 1.75rem;
@@ -15,17 +15,13 @@ $header-height: 2.5rem;
         vertical-align: middle;
         margin-top: 1rem;
         margin-bottom: 0;
-        margin-left: 4rem;
-    }
-    &__form {
-        margin-left: 4rem;
-        margin-right: 4rem;
     }
     .input-field {
         margin: 0 0 1rem 0; 
         display: grid;
         label {
             font-size: 1rem;
+            text-transform: capitalize;
         }
         input,select,option {
             font-size: 1rem;

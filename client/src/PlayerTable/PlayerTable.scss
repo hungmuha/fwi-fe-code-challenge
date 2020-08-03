@@ -87,15 +87,16 @@ $header-height: 2.5rem;
       &:hover {
         cursor: pointer;
       }
-      &.danger{
-        color: red;
-      }
     }
   }
 
   &__native {
     width: 6rem;
   }
+}
+
+.danger{
+  color: red;
 }
 
 .country {
