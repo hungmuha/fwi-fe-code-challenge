@@ -33,8 +33,8 @@ const CreatePlayer = () => {
         }
         apiUtils.post('/players',newPlayer)
         .then(function(response){
-            history.push('/');
             dispatch(postNewPlayer(response.data));
+            history.push('/');
         });  
     }
 
@@ -57,7 +57,7 @@ const CreatePlayer = () => {
                     value = {imageUrl}
                     changeFn ={setimageUrl}
                     message = {imageUrlMsg}
-                />
+                />               
                 <InputField
                     label = 'winnings'
                     type='number'

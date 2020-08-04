@@ -31,7 +31,7 @@ const PlayerTable = () => {
       aria-label="Poker Players"
       className="player-table"
     >
-      <TableHeader/>
+      <TableHeader players={players}/>
       <TableBody players={players} />
     </div>
   );

@@ -68,24 +68,27 @@ $header-height: 2.5rem;
 
   &__player {
     width: 100%;
+    
   }
 
   &__winnings {
     padding-right: 1.5rem;
-    text-align: right;
-    width: 8rem;
+    text-align: center;
+    width: 10rem;
   }
   &__action {
     padding-right: 1.5rem;
     text-align: center;
-    width: 10rem;
+    width: 6rem;
     
     .action-link {
       text-decoration: none;
-      margin-left: .7rem;
       color: $vivid;
       &:hover {
         cursor: pointer;
+      }
+      &.danger{
+        color:#FF0000;
       }
     }
   }
@@ -93,10 +96,22 @@ $header-height: 2.5rem;
   &__native {
     width: 6rem;
   }
+  .sorting-box {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .5rem;
+    .action-link {
+      display: block;
+      line-height: 1rem;
+    }
+  }
 }
 
 .danger{
-  color: red;
+  color:#FF0000;
+}
+.active {
+  color: $vivid;
 }
 
 .country {

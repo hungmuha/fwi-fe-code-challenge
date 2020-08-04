@@ -21,13 +21,14 @@ const TableRow = ({id, name, country, winnings, imageUrl }) => {
                 <Avatar src={imageUrl} />
             </td>
             <td role="gridcell" className="table__player">
-                {name}
+                <Link to={'/players/' + id} className="action-link" aria-label='click to view and edit player info'>
+                    {name}
+                </Link>
             </td>
             <td role="gridcell" className="table__action">
-                <Link to={'/editplayer/' + id} className="action-link">
-                    Update
-                </Link>
-                <a href={void(0)}  onClick={handleDelete} className="action-link danger">Delete</a>
+                <a href={void(0)} onClick={handleDelete} className="action-link danger" aria-label='click to delete player'>
+                    Delete
+                </a>
             </td>
             <td role="gridcell" className="table__winnings">
                 {winnings.toLocaleString(undefined, {

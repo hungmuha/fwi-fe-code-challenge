@@ -74,7 +74,7 @@ const EditPlayer = () => {
                         value = {imageUrl}
                         changeFn ={setimageUrl}
                         message = {imageUrlMsg}
-                    />
+                    />                   
                     <InputField
                         label = 'winnings'
                         type='number'

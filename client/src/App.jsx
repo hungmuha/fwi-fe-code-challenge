@@ -16,7 +16,7 @@ const App = () => {
         <Route path='/createplayer'>
           <CreatePlayer/>
         </Route>
-        <Route path='/editplayer/:id'>
+        <Route path='/players/:id'>
           <EditPlayer/>
         </Route>
       </Switch>
