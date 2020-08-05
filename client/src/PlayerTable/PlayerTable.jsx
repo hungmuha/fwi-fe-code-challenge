@@ -1,5 +1,5 @@
-import React, { useEffect,useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
 
 import {useInfiniteScroll ,useFetch} from '../apis/customHooks';
 

@@ -5,12 +5,6 @@ import apiUtils from '../apis/apiUtils';
 
 export const useFetch = (pager,sorts) => {
     const dispatch = useDispatch();
-    // useEffect(()=>{
-    //     apiUtils.get(`/players?size=${pager.size}&from=${pager.start}&sortBy=${sorts.sortBy}&sortOrder=${sorts.sortOrder}`)
-    //         .then(function(response){
-    //             dispatch(fetchPlayersSuccess(response.data));
-    //         }); 
-    // },[dispatch,pager]);
     const getPlayers = useCallback(()=>{
         apiUtils.get(`/players?size=${pager.size}&from=${pager.start}&sortBy=${sorts.sortBy}&sortOrder=${sorts.sortOrder}`)
             .then(function(response){
@@ -23,6 +17,7 @@ export const useFetch = (pager,sorts) => {
         getPlayers()
     }, [getPlayers]);
 }
+
 // infinite scrolling with intersection observer
 export const useInfiniteScroll = (scrollRef) => {
     const dispatch = useDispatch();

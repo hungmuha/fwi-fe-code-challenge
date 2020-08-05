@@ -17,10 +17,6 @@ export const deletePlayer = (id) => {
   return {type: DELETE_PLAYER_SUCCESS, payload: {id} };
 }
 
-// export const sortedPlayer = (data,sortBy,sortOrder) => {
-//   return {type: SORTED_PLAYERS_SUCCESS, payload: {data,sortBy,sortOrder} };
-// }
-
 export const sortedPlayer = (sortBy,sortOrder) => {
   return {type: SORTED_PLAYERS_SUCCESS, payload: {sortBy,sortOrder} };
 }

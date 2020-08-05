@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import { useDispatch,useSelector} from 'react-redux';
 
@@ -6,16 +6,10 @@ import {sortedPlayer} from '../appState/actions';
 // get our fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSortUp,faSortDown} from '@fortawesome/free-solid-svg-icons'
-import apiUtils from '../apis/apiUtils';
 
 const TableHeader = () => {
   const dispatch = useDispatch();
   const handleSort = (sortBy,sortOrder) => { 
-    // apiUtils.get(`/players?sortBy=${sortBy}&sortOrder=${sortOrder}`)
-    //   .then(function(response){
-    //       dispatch(sortedPlayer(response.data,sortBy,sortOrder));
-    //       setActiveSort(sortBy + sortOrder);
-    //   });  
     dispatch(sortedPlayer(sortBy,sortOrder));
   }
   const sorts = useSelector((state) => state.sorts);

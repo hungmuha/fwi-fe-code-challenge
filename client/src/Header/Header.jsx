@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import './Header.scss';
 import { ReactComponent as CloudColor } from './cloud-color.svg';
@@ -10,7 +11,7 @@ const Header = () => (
       <CloudColor className="logo__color" />
       <CloudEffects className="logo__effects" />
     </div>
-    <h1 className="header__title">FWI Poker Challenge</h1>
+    <Link to={'/'} aria-label="navigate to homepage"><h1 className="header__title">FWI Poker Challenge</h1></Link>
   </header>
 );
 
