@@ -1,7 +1,7 @@
 import React, { useEffect,useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchPlayersSuccess } from '../appState/actions';
+import {useInfiniteScroll ,useFetch} from '../apis/customHooks';
 
 import './PlayerTable.scss';
 import TableHeader from './TableHeader';
@@ -10,20 +10,13 @@ import TableBody from './TableBody';
 const getPlayers = (state) => state.playerIds.map((id) => state.players[id]);
 
 const PlayerTable = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    (async function fetchPlayers() {
-      const response = await fetch('http://localhost:3001/players', {
-        headers: {
-          Accept: 'application/json',
-        },
-      });
-      const json = await response.json();
-      dispatch(fetchPlayersSuccess(json));
-    })();
-  }, [dispatch]);
 
+  const pager = useSelector((state) => state.pages);
+  const sorts = useSelector((state) => state.sorts);
+  useFetch(pager,sorts);
   const players = useSelector(getPlayers);
+  let bottomBoundaryRef = useRef(null);
+  useInfiniteScroll(bottomBoundaryRef);
   return (
     <div
       id="player-table-grid"
@@ -31,8 +24,9 @@ const PlayerTable = () => {
       aria-label="Poker Players"
       className="player-table"
     >
-      <TableHeader players={players}/>
+      <TableHeader />
       <TableBody players={players} />
+      <div id='page-bottom-boundary' ref={bottomBoundaryRef}></div>
     </div>
   );
 };
