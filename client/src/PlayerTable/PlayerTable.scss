@@ -46,6 +46,19 @@ $header-height: 2.5rem;
     height: $header-height;
     text-align: left;
     vertical-align: middle;
+    .add-button {
+      border: .1rem $charcoal solid;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      height: 2rem;
+      width: 2rem;
+      background-color: $pearl;
+      transition: background-color 0.15s;
+      &:hover{
+        background-color: $vivid;
+        outline: transparent;
+      }
+    }
   }
 
   &__avatar {
@@ -55,22 +68,50 @@ $header-height: 2.5rem;
 
   &__player {
     width: 100%;
+    
   }
 
   &__winnings {
     padding-right: 1.5rem;
-    text-align: right;
-    width: 8rem;
+    text-align: center;
+    width: 10rem;
   }
   &__action {
     padding-right: 1.5rem;
-    text-align: right;
-    width: 8rem;
+    text-align: center;
+    width: 6rem;
+    
+    .action-link {
+      text-decoration: none;
+      color: $vivid;
+      &:hover {
+        cursor: pointer;
+      }
+      &.danger{
+        color:#FF0000;
+      }
+    }
   }
 
   &__native {
     width: 6rem;
   }
+  .sorting-box {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .5rem;
+    .action-link {
+      display: block;
+      line-height: 1rem;
+    }
+  }
+}
+
+.danger{
+  color:#FF0000;
+}
+.active {
+  color: $vivid;
 }
 
 .country {
@@ -81,4 +122,8 @@ $header-height: 2.5rem;
   .avatar {
     margin-right: 0.5rem;
   }
+}
+
+#page-bottom-boundary {
+  border: 1px solid red
 }

@@ -10,9 +10,15 @@ const App = () => {
     <BrowserRouter>
       <Header /> 
       <Switch>
-        <Route exact path='/' component={PlayerTable}></Route>
-        <Route path='/createplayer' component={CreatePlayer}/>
-        <Route path='/editplayer/:id' component={EditPlayer}/>
+        <Route exact path='/'>
+          <PlayerTable/>
+        </Route>
+        <Route path='/createplayer'>
+          <CreatePlayer/>
+        </Route>
+        <Route path='/players/:id'>
+          <EditPlayer/>
+        </Route>
       </Switch>
     </BrowserRouter>
   );
